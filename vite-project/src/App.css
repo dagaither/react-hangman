@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.guessed {
+  height: 60px;
+  width: 560px;
+}
+.winLose {
+  height: 60px;
+  width: 560px;
+}
