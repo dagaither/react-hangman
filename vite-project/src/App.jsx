@@ -51,9 +51,7 @@ function App() {
       }
       if (guesses <= puzzle.length -1) {
         setHidden(newWord);
-        setGuesses(prevGuesses => prevGuesses + 1);
-        setGuessedLetters(prevGuessedLetters => [...prevGuessedLetters, letter]);
-        setInputValue("");
+        updateGuessLetterInput(letter);
       } else {
         gameOver();
       }
@@ -63,14 +61,18 @@ function App() {
       }
     } else {
       if (guesses <= puzzle.length -1) {
-        setGuesses(prevGuesses => prevGuesses + 1);
-        setGuessedLetters(prevGuessedLetters => [...prevGuessedLetters, letter]);
-        setInputValue("");
+        updateGuessLetterInput(letter);
       } else {
         gameOver();
       }
     }
   };
+
+  const updateGuessLetterInput = (letter) => {
+    setGuesses(prevGuesses => prevGuesses + 1);
+    setGuessedLetters(prevGuessedLetters => [...prevGuessedLetters, letter]);
+    setInputValue("");
+  }
 
   const hiddenWord = (puzzle) => {
     let hidden = ""
@@ -102,7 +104,7 @@ function App() {
   return (
     <>
     <h1>React Hangman</h1>
-    <h1>{hidden}</h1>
+    <h1>{hidden.split('').join(' ')}</h1>
     <form id="userGuess" onSubmit={handleGuessedLetter}>
       <input 
       type="text" 
